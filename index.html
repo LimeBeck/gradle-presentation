@@ -341,8 +341,27 @@
 					<li class="fragment fade-up">Gradle wrapper</li>
 				</ol>
 			</section>
-			<section>
-				<h2 class="r-fit-text">Подробнее про работу с версиями</h2>
+			<section data-auto-animate>
+				<h2 data-id="title" class="r-fit-text">Работа с версиями</h2>
+				<h3 data-id="subtitle">Простой кейс</h3>
+				<aside class="notes">
+					Зависимости можно описывать в одном месте, а применять - в другом
+				</aside>
+				<pre class="kotlin"><code id="maven-xml" style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal"><script type="text/template">
+				dependencies {
+					implementation("org.springframework:spring-web")
+				}
+				...
+				dependencies {
+					constraints {
+						implementation("org.springframework:spring-web:5.0.2.RELEASE")
+					}
+				}
+			</script></code></pre>
+			</section>
+			<section data-auto-animate>
+				<h2 data-id="title" class="r-fit-text">Работа с версиями</h2>
+				<h3 data-id="subtitle">Сложный кейс</h3>
 				<aside class="notes">
 					Тут подключен slf4j с гибкики ограничениями: любая патч версия 1.7, если никто не пишет точнее - 1.7.25
 					В спринге - может быть выше 4.2.9.RELEASE, но только не 4.3.16.RELEASE
@@ -398,11 +417,36 @@
 					https://www.jrebel.com/resources/java-developer-productivity-report-2021</h4>
 			</section>
 			<section>
-				<h2 class="r-fit-text">Но уступает позиции в Kotlin-разработке</h2>
+				<h2 class="r-fit-text">Почему?</h2>
+				<ol>
+					<li class="fragment fade-up">Проверенный</li>
+					<li class="fragment fade-up">Общеизвестный</li>
+					<li class="fragment fade-up">Простой</li>
+					<li class="fragment fade-up">Охватывает потребности Enterprise</li>
+					<li class="fragment fade-up">Давно используется, страшно менять (легаси)</li>
+				</ol>
+			</section>
+			<section>
+				<h2 class="r-fit-text">Но уступает позиции в Kotlin-разработке Gradle</h2>
 				<img data-id="img" class="r-stretch" src="assets/kotlin-stat.png">
 				<h4>По данным опроса Jetbrains в 2020 г.: https://www.jetbrains.com/lp/kotlin-census-2020/</h4>
 			</section>
+			<section>
+				<h2 class="r-fit-text">Почему?</h2>
+				<ol>
+					<li class="fragment fade-up">Хочется один язык</li>
+					<li class="fragment fade-up">Сложно конфигурировать нестандартные проекты</li>
+					<li class="fragment fade-up">Тяжело расширять</li>
+					<li class="fragment fade-up">Gradle - стильно, модно, молодежно</li>
+					<li class="fragment fade-up">Экосистема Kotlin затачивается под Gradle</li>
+				</ol>
+			</section>
 			<section data-auto-animate>
+				<aside class="notes">
+					Выводы: я бы советовал изучить gradle, как минимум, чтобы лучше узнать, как работают системы сборки
+					В том числе, это поможет лучше понять Maven
+					Использовать ли его в своих проектах - нужно оценить, чего будет стоить переход и какие профиты это принесет
+				</aside>
 				<img class="r-stretch" src="assets/thatsall.jpg">
 			</section>
 			<section data-auto-animate>
