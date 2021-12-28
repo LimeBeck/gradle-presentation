@@ -1,0 +1,392 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2 class="r-fit-text">(Де)мистифицируем</h2>
+				<aside class="notes">
+					Спросить, кто вообще пользовался гредлом
+				</aside>
+				<img class="r-stretch" src="/assets/gradle-white-primary.png">
+			</section>
+			<section>
+				<h2 class="r-fit-text" style="color: red;">DANGER</h2>
+				<h2>Холиварная тема</h2>
+				<aside class="notes">
+					Рассказать, что я вкатился сначала на гредл, а потом только попробовал мавен
+				</aside>
+			</section>
+			<section data-auto-animate>
+				<h2>Что же такое Gradle?</h2>
+				<ul class="fragment fade-up">
+					<li>Тянет зависимости</li>
+					<li>Вызывает компиляторы Kotlin и Java</li>
+					<li>Генерит код из всяких xsd</li>
+					<li>Пакует jar</li>
+					<li>И прочие скучные задачи</li>
+				</ul>
+			</section>
+			<section data-auto-animate>
+				<h2 id="maven-title" class="r-fit-text">Так же как и Maven?</h2>
+			</section>
+			<section data-auto-animate>
+				<h2 id="maven-title" class="r-fit-text">Так же как и Maven?</h2>
+				<img class="r-stretch" src="/assets/no.png">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Maven-style</h2>
+				<aside class="notes">
+					И такое еще на 70 строк + нельзя указать в одном месте версии зависимостей для всех подпроектов
+				</aside>
+				<pre data-id="code-animation"><code style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal" data-trim data-line-numbers="1-30"><script type="text/template">
+					<?xml version="1.0" encoding="UTF-8"?>
+          	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+          
+              <modelVersion>4.0.0</modelVersion>
+          
+              <groupId>org.example</groupId>
+              <artifactId>maven-module</artifactId>
+              <version>1.0-SNAPSHOT</version>
+              <packaging>jar</packaging>
+          
+              <name>org.example maven-module</name>
+          
+              <properties>
+                  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                  <kotlin.version>1.6.10</kotlin.version>
+                  <kotlin.code.style>official</kotlin.code.style>
+                  <junit.version>4.12</junit.version>
+              </properties>
+          
+              <dependencies>
+                  <dependency>
+                      <groupId>org.jetbrains.kotlin</groupId>
+                      <artifactId>kotlin-stdlib</artifactId>
+                      <version>\${kotlin.version}</version>
+                  </dependency>
+                  <dependency>
+                      <groupId>org.jetbrains.kotlin</groupId>
+                      <artifactId>kotlin-test-junit</artifactId>
+                      <version>\${kotlin.version}</version>
+                      <scope>test</scope>
+                  </dependency>
+                  <dependency>
+                      <groupId>junit</groupId>
+                      <artifactId>junit</artifactId>
+                      <version>\${junit.version}</version>
+                      <scope>test</scope>
+                  </dependency>
+              </dependencies>
+          
+              <build>
+                  <sourceDirectory>src/main/kotlin</sourceDirectory>
+                  <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+          
+                  <plugins>
+                      <plugin>
+                          <groupId>org.jetbrains.kotlin</groupId>
+                          <artifactId>kotlin-maven-plugin</artifactId>
+                          <version>\${kotlin.version}</version>
+                          <executions>
+                              <execution>
+                                  <id>compile</id>
+                                  <phase>compile</phase>
+                                  <goals>
+                                      <goal>compile</goal>
+                                  </goals>
+                              </execution>
+                              <execution>
+                                  <id>test-compile</id>
+                                  <phase>test-compile</phase>
+                                  <goals>
+                                      <goal>test-compile</goal>
+                                  </goals>
+                              </execution>
+                          </executions>
+                      </plugin>
+                  </plugins>
+              </build>
+          </project>
+			</script></code></pre>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Maven-style</h2>
+				<aside class="notes">
+					И такое еще на 70 строк + нельзя указать в одном месте версии зависимостей для всех подпроектов
+				</aside>
+				<pre data-id="code-animation"><code style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal" data-trim data-line-numbers="40-70"><script type="text/template">
+					<?xml version="1.0" encoding="UTF-8"?>
+          <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+          
+              <modelVersion>4.0.0</modelVersion>
+          
+              <groupId>org.example</groupId>
+              <artifactId>maven-module</artifactId>
+              <version>1.0-SNAPSHOT</version>
+              <packaging>jar</packaging>
+          
+              <name>org.example maven-module</name>
+          
+              <properties>
+                  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                  <kotlin.version>1.6.10</kotlin.version>
+                  <kotlin.code.style>official</kotlin.code.style>
+                  <junit.version>4.12</junit.version>
+              </properties>
+          
+              <dependencies>
+                  <dependency>
+                      <groupId>org.jetbrains.kotlin</groupId>
+                      <artifactId>kotlin-stdlib</artifactId>
+                      <version>\${kotlin.version}</version>
+                  </dependency>
+                  <dependency>
+                      <groupId>org.jetbrains.kotlin</groupId>
+                      <artifactId>kotlin-test-junit</artifactId>
+                      <version>\${kotlin.version}</version>
+                      <scope>test</scope>
+                  </dependency>
+                  <dependency>
+                      <groupId>junit</groupId>
+                      <artifactId>junit</artifactId>
+                      <version>\${junit.version}</version>
+                      <scope>test</scope>
+                  </dependency>
+              </dependencies>
+          
+              <build>
+                  <sourceDirectory>src/main/kotlin</sourceDirectory>
+                  <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+          
+                  <plugins>
+                      <plugin>
+                          <groupId>org.jetbrains.kotlin</groupId>
+                          <artifactId>kotlin-maven-plugin</artifactId>
+                          <version>\${kotlin.version}</version>
+                          <executions>
+                              <execution>
+                                  <id>compile</id>
+                                  <phase>compile</phase>
+                                  <goals>
+                                      <goal>compile</goal>
+                                  </goals>
+                              </execution>
+                              <execution>
+                                  <id>test-compile</id>
+                                  <phase>test-compile</phase>
+                                  <goals>
+                                      <goal>test-compile</goal>
+                                  </goals>
+                              </execution>
+                          </executions>
+                      </plugin>
+                  </plugins>
+              </build>
+          </project>
+			</script></code></pre>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Gradle-style</h2>
+				<pre data-id="code-animation" class="kotlin"><code style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal"><script type="text/template">
+				val kotlinVersion: String by project
+				plugins {
+					kotlin("jvm") version kotlinVersion
+				}
+				
+				group = "org.example"
+				version = "1.0-SNAPSHOT"
+				
+				repostories {
+					mavenCentral()
+				}
+				
+				dependencies {
+					implementation(kotlin("stdlib"))
+				}
+			</script></code></pre>
+			</section>
+			<section>
+				<h2 class="r-fit-text">Лично моя реакция</h2>
+				<img class="r-stretch" src="/assets/cracker-bird.png">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Взгляд на сборку от Maven</h2>
+				<aside class="notes">
+					У мавена три фиксированные фазы
+					There are three built-in build lifecycles: default, clean and site.
+					The default lifecycle handles your project deployment,
+					the clean lifecycle handles project cleaning,
+					while the site lifecycle handles the creation of your project's web site.
+				</aside>
+				<img class="r-stretch" src="/assets/maven-lifecycle.png">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">DAGи от Gradle</h2>
+				<aside class="notes">
+					У гредла - абсолютно произвольный направленный ацикличный граф задач,
+					который вычисляется перед выполнением,
+					что дает множество преимуществ, особенно,
+					если у нас многомодульный проект, либо особо мудреная сборка
+				</aside>
+				<img class="r-stretch" src="/assets/gradle-dag.png">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text" id="title">И что с того?</h2>
+			</section>
+			<section data-auto-animate>
+				<h2 id="title">А вот что</h2>
+				<aside class="notes">
+					Первый плюс гредла перед мавеном:
+					<br />За счет предварительного построения графа задач, гредл более производительным, чем мавен,
+					<br />т.к. можно вычислить, какие из тасков нужно выполнить для достижения нужного эффекта.
+					<br />Особенно с учетом того, что он умеет кешировать результат выполнения тасков и даже делать
+					инкрементальную компиляцию
+				</aside>
+				<ul>
+					<li class="fragment fade-up">Производительность</li>
+					<li class="fragment fade-up">Инкрементальная сборка</li>
+					<li class="fragment fade-up">Инкрементальная компиляция</li>
+					<li class="fragment fade-up">Кеш результатов сборки</li>
+					<li class="fragment fade-up">Гибкость в настройке</li>
+					<li class="fragment fade-up">Можно эффективно параллелить выполнение задач</li>
+				</ul>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Еще у Gradle есть демон</h2>
+				<img class="r-stretch" src="/assets/father.jpg">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Производительность в сравнении с Maven (по версии Gradle.org)</h2>
+				<img class="r-stretch" src="/assets/build-time.png">
+			</section>
+			<section>
+				<h2 class="r-fit-text">Киллер-фича</h2>
+			</section>
+			<section>
+				<h2 class="r-fit-text">Kotlin DSL</h2>
+				<img class="r-stretch" src="/assets/maskot.jpg">
+			</section>
+			<section>
+				<aside class="notes">
+					Хуже поддержка в ide, дольше работает
+					Kotlin dsl копилится перед выполнением и работает быстрее
+				</aside>
+				<h2 class="r-fit-text">Groovy DSL?</h2>
+				<img class="r-stretch" src="/assets/no-thanks.jpg">
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Пример написания задачи в Gradle</h2>
+				<aside class="notes">
+					Тут мы получаем результат всех задач в подпроекте с именем bootJar и копируем его в директорию dist
+					А после указывем, что это действие нужно выполнить после завершения всех запланированных задач
+					bootJar
+				</aside>
+				<pre class="kotlin"><code id="maven-xml" style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal"><script type="text/template">
+					val copyJarsToDist by tasks.registering {
+						doLast {
+							val bootJars = subprojects.mapNotNull {
+								it.tasks.findByName("bootJar")
+							}
+							copy {
+								from(bootJars)
+								into(project.rootDir.path + "/dist")
+							}
+						}
+					}
+					
+					subprojects {
+						tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootJar>().configureEach {
+							finalizedBy(copyJarsToDist)
+						}
+					}
+			</script></code></pre>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Еще фишки Gradle</h2>
+				<ol>
+					<li class="fragment fade-up">Гибкость</li>
+					<li class="fragment fade-up">Адекватное управление зависимостями</li>
+					<li class="fragment fade-up">Легкость написания новых тасков</li>
+					<li class="fragment fade-up">Контроль над происходящим при сборке</li>
+					<li class="fragment fade-up">Gradle wrapper</li>
+				</ol>
+			</section>
+			<section>
+				<h2 data-id="title" class="r-fit-text">Когда же использовать Gradle?</h2>
+			</section>
+			<section>
+				<h2 data-id="title" class="r-fit-text">Нестандартная структура проекта</h2>
+				<img data-id="img" class="r-stretch" src="/assets/mud.png">
+			</section>
+			<section>
+				<h2 data-id="title" class="r-fit-text">Много подпроектов и зависимостей (см пункт 1)</h2>
+				<img data-id="img" class="r-stretch" src="/assets/BigBallOfMud-4.png">
+			</section>
+			<section>
+				<h2 data-id="title" class="r-fit-text">Есть микрозадачи, которые хочется автоматизировать</h2>
+				<img data-id="img" class="r-stretch" src="/assets/automate.jpg">
+			</section>
+			<section>
+				<h2 data-id="title" class="r-fit-text">Kotlin ❤️</h2>
+			</section>
+			<section>
+				<h2 class="r-fit-text">А что насчет Maven?</h2>
+			</section>
+			<section>
+				<h2 class="r-fit-text">Всё еще самый популярный для JVM в целом</h2>
+				<img data-id="img" class="r-stretch" src="/assets/pie-chart.png">
+				<h4>По данным опроса JRebel в 2021 г.: https://www.jrebel.com/resources/java-developer-productivity-report-2021</h4>
+			</section>
+			<section>
+				<h2 class="r-fit-text">Но уступает позиции в Kotlin-разработке</h2>
+				<img data-id="img" class="r-stretch" src="/assets/kotlin-stat.png">
+				<h4>По данным опроса Jetbrains в 2020 г.: https://www.jetbrains.com/lp/kotlin-census-2020/</h4>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Полезные ссылки</h2>
+				<ol>
+					<li>https://gradle.org/</li>
+					<li>Гайд от команды Spring: https://spring.io/guides/gs/gradle/</li>
+					<li>Stackoverflow, когда напишете свой таск, а он не будет работать</li>
+				</ol>
+			</section>
+			<section data-auto-animate>
+				<img class="r-stretch" src="/assets/thatsall.jpg">
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			controls: false,
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
