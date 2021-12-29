@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
 		.reveal h1,
 		.reveal h2,
 		.reveal h3,
@@ -26,6 +27,14 @@
 
 		.reveal .slide {
 			font-family: 'Roboto', sans-serif;
+		}
+
+		.container {
+			display: flex;
+		}
+
+		.col {
+			flex: 1;
 		}
 	</style>
 </head>
@@ -40,18 +49,26 @@
 				</aside>
 				<img class="r-stretch" src="assets/gradle-white-primary.png">
 			</section>
-			<section>
+			<section data-auto-animate>
 				<h2>Кто я такой?</h2>
 				<aside class="notes">
 					Рассказать, что я вкатился сначала на гредл, а потом только попробовал мавен
 				</aside>
-				<ul>
-					<li class="fragment fade-up">Фанат Linux 10 лет</li>
-					<li class="fragment fade-up">Ex-фанат Python</li>
-					<li class="fragment fade-up">Вкатился с Python на Kotlin</li>
-					<li class="fragment fade-up">Фанат Kotlin 3 года 🤷‍♂️</li>
-					<li class="fragment fade-up">Начал пользоваться Gradle раньше Maven</li>
-				</ul>
+				<div data-id="row" class="container">
+					<div data-id="col" class="col">
+						<img data-id="img" height="400" src="assets/me.jpg">
+					</div>
+					<div class="col">
+						<ul>
+							<li class="">Фанат Linux с 15 лет</li>
+							<li class="fragment fade-up">Ex-фанат Python</li>
+							<li class="fragment fade-up">Вкатился с Python на Kotlin</li>
+							<li class="fragment fade-up">Фанат Kotlin 3 года 🤷‍♂️</li>
+							<li class="fragment fade-up">Начал пользоваться Gradle раньше Maven</li>
+							<li class="fragment fade-up">Ex-тимлид маленькой, но гордой команды</li>
+						</ul>
+					</div>
+				</div>
 			</section>
 			<section>
 				<h2 class="r-fit-text" style="color: red;">DANGER</h2>
@@ -392,7 +409,8 @@
 				<h2 data-id="title" class="r-fit-text">Работа с версиями</h2>
 				<h3 data-id="subtitle">Сложный кейс</h3>
 				<aside class="notes">
-					Тут подключен slf4j с гибкики ограничениями: любая патч версия 1.7, если никто не пишет точнее - 1.7.25
+					Тут подключен slf4j с гибкики ограничениями: любая патч версия 1.7, если никто не пишет точнее -
+					1.7.25
 					В спринге - может быть выше 4.2.9.RELEASE, но только не 4.3.16.RELEASE
 				</aside>
 				<pre class="kotlin"><code id="maven-xml" style="line-height: normal; padding: 0 3px;font-size: small; overflow-wrap:normal"><script type="text/template">
@@ -474,7 +492,8 @@
 				<aside class="notes">
 					Выводы: я бы советовал изучить gradle, как минимум, чтобы лучше узнать, как работают системы сборки
 					В том числе, это поможет лучше понять Maven
-					Использовать ли его в своих проектах - нужно оценить, чего будет стоить переход и какие профиты это принесет
+					Использовать ли его в своих проектах - нужно оценить, чего будет стоить переход и какие профиты это
+					принесет
 				</aside>
 				<img class="r-stretch" src="assets/thatsall.jpg">
 			</section>
