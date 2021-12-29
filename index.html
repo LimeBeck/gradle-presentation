@@ -41,20 +41,30 @@
 				<img class="r-stretch" src="assets/gradle-white-primary.png">
 			</section>
 			<section>
-				<h2 class="r-fit-text" style="color: red;">DANGER</h2>
-				<h2>Холиварная тема</h2>
+				<h2 class="r-fit-text">Кто я такой?</h2>
 				<aside class="notes">
 					Рассказать, что я вкатился сначала на гредл, а потом только попробовал мавен
 				</aside>
+				<ul>
+					<li class="fragment fade-up">Фанат Linux 10 лет</li>
+					<li class="fragment fade-up">Ex-фанат Python</li>
+					<li class="fragment fade-up">Вкатился с Python на Kotlin</li>
+					<li class="fragment fade-up">Фанат Kotlin 3 года 🤷‍♂️</li>
+					<li class="fragment fade-up">Начал пользоваться Gradle раньше Maven</li>
+				</ul>
+			</section>
+			<section>
+				<h2 class="r-fit-text" style="color: red;">DANGER</h2>
+				<h2>Холиварная тема</h2>
 			</section>
 			<section data-auto-animate>
 				<h2>Что же такое Gradle?</h2>
-				<ul class="fragment fade-up">
-					<li>Тянет зависимости</li>
-					<li>Вызывает компиляторы Kotlin и Java</li>
-					<li>Генерит код из всяких xsd</li>
-					<li>Пакует jar</li>
-					<li>И прочие скучные задачи</li>
+				<ul>
+					<li class="fragment fade-up">Тянет зависимости</li>
+					<li class="fragment fade-up">Вызывает компиляторы Kotlin и Java</li>
+					<li class="fragment fade-up">Генерит код из всяких xsd</li>
+					<li class="fragment fade-up">Пакует jar</li>
+					<li class="fragment fade-up">И прочие скучные задачи</li>
 				</ul>
 			</section>
 			<section data-auto-animate>
@@ -251,7 +261,7 @@
 				<img class="r-stretch" src="assets/maven-lifecycle.png">
 			</section>
 			<section data-auto-animate>
-				<h2 class="r-fit-text">DAG-и от Gradle</h2>
+				<h2 class="r-fit-text">DAG-и* от Gradle</h2>
 				<aside class="notes">
 					У гредла - абсолютно произвольный направленный ацикличный граф задач,
 					который вычисляется перед выполнением,
@@ -259,6 +269,7 @@
 					если у нас многомодульный проект, либо особо мудреная сборка
 				</aside>
 				<img class="r-stretch" src="assets/gradle-dag.png">
+				<h2 class="r-fit-text">*DAG - Directed Acyclic Graph</h2>
 			</section>
 			<section data-auto-animate>
 				<h2 class="r-fit-text" id="title">И что с того?</h2>
@@ -278,7 +289,7 @@
 					<li class="fragment fade-up">Инкрементальная компиляция</li>
 					<li class="fragment fade-up">Кеш результатов сборки</li>
 					<li class="fragment fade-up">Гибкость в настройке</li>
-					<li class="fragment fade-up">Можно эффективно параллелить выполнение задач</li>
+					<li class="fragment fade-up">Эффективно параллелит выполнение задач</li>
 				</ul>
 			</section>
 			<section data-auto-animate>
@@ -296,12 +307,19 @@
 				<h2 class="r-fit-text">Kotlin DSL</h2>
 				<img class="r-stretch" src="assets/maskot.jpg">
 			</section>
-			<section>
+			<section data-auto-animate>
 				<aside class="notes">
 					Хуже поддержка в ide, дольше работает
 					Kotlin dsl копилится перед выполнением и работает быстрее
 				</aside>
-				<h2 class="r-fit-text">Groovy DSL?</h2>
+				<h2 data-id="title" class="r-fit-text">Groovy DSL?</h2>
+			</section>
+			<section data-auto-animate>
+				<aside class="notes">
+					Хуже поддержка в ide, дольше работает, много магии динамической типизации
+					Kotlin dsl копилится перед выполнением и работает быстрее
+				</aside>
+				<h2 data-id="title" class="r-fit-text">Groovy DSL?</h2>
 				<img class="r-stretch" src="assets/no-thanks.jpg">
 			</section>
 			<section data-auto-animate>
@@ -340,6 +358,17 @@
 					<li class="fragment fade-up">Контроль над происходящим при сборке</li>
 					<li class="fragment fade-up">Gradle wrapper</li>
 				</ol>
+			</section>
+			<section data-auto-animate>
+				<h2 class="r-fit-text">Еще фишки Gradle</h2>
+				<ol>
+					<li>Гибкость</li>
+					<li>Адекватное управление зависимостями</li>
+					<li>Легкость написания новых тасков</li>
+					<li>Контроль над происходящим при сборке</li>
+					<li><s>Gradle wrapper</s></li>
+				</ol>
+				<img class="r-stretch" src="assets/secure.png">
 			</section>
 			<section data-auto-animate>
 				<h2 data-id="title" class="r-fit-text">Работа с версиями</h2>
@@ -438,7 +467,7 @@
 					<li class="fragment fade-up">Сложно конфигурировать нестандартные проекты</li>
 					<li class="fragment fade-up">Тяжело расширять</li>
 					<li class="fragment fade-up">Gradle - стильно, модно, молодежно</li>
-					<li class="fragment fade-up">Экосистема Kotlin затачивается под Gradle</li>
+					<li class="fragment fade-up">Тулинг Kotlin затачивается под Gradle</li>
 				</ol>
 			</section>
 			<section data-auto-animate>
